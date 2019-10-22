@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserStoreRequest;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
@@ -20,13 +22,14 @@ class UserController extends Controller
 
     public function store(UserStoreRequest $request)
     {
-        $passwordHashed = Hash::make($request->password, [
-            'rounds' => 12
-        ]);
-        $request->password = $passwordHashed;
-        $user = new User;
-        $user->fill($request->all());
-        $user->save();
+        return $request;
+        // $passwordHashed = Hash::make($request->password, [
+        //     'rounds' => 12
+        // ]);
+        // $request->password = $passwordHashed;
+        // $user = new User;
+        // $user->fill($request->all());
+        // $user->save();
     }
 
     public function show(User $user)
