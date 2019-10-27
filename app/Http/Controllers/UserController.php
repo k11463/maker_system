@@ -22,14 +22,15 @@ class UserController extends Controller
 
     public function store(UserStoreRequest $request)
     {
-        return $request;
-        // $passwordHashed = Hash::make($request->password, [
-        //     'rounds' => 12
-        // ]);
-        // $request->password = $passwordHashed;
-        // $user = new User;
-        // $user->fill($request->all());
-        // $user->save();
+        $passwordHashed = Hash::make($request->password, [
+            'rounds' => 12
+        ]);
+        $user = new User;
+        $user->fill($request->all());
+        $user->password = $passwordHashed;
+        $user->save();
+
+        return redirect('/');
     }
 
     public function show(User $user)
