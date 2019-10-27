@@ -2,9 +2,7 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-8">
-        <div class="card">Register</div>
-        <router-link to="/">Home</router-link>
-        <router-link to="/login">about</router-link>
+        <div class="card">Login</div>
       </div>
     </div>
   </div>
