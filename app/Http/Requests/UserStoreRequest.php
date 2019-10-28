@@ -19,7 +19,6 @@ class UserStoreRequest extends FormRequest
             'legal_name' => 'required',
             'birthday' => 'required',
             'phone' => 'required',
-            'line_id' => 'required',
             'password' => 'required',
         ];
     }
@@ -32,7 +31,6 @@ class UserStoreRequest extends FormRequest
             'legal_name.required' => '姓名不可為空',
             'birthday.required' => '生日不可為空',
             'phone.required' => '電話不可為空',
-            'line_id.required' => 'LineID不可為空',
             'password.required' => '密碼不可為空',
         ];
     }

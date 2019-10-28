@@ -12,6 +12,5 @@
 */
 
 Route::get('/{any}', 'SinglePageController@index')->where('any', '.*');
-Route::get('/register', 'UserController@create');
 
 Route::post('/registerstore', 'UserController@store');
