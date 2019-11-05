@@ -34,7 +34,7 @@
                   <div v-for="error in errors" :key="error">{{ error[0] }}</div>
                 </div>
                 <v-card-actions>
-                  <v-btn @click="RegisterBtn" :loading="isSend">Send</v-btn>
+                  <v-btn @click="SignUp" :loading="isSend">SignUp</v-btn>
                   <v-spacer></v-spacer>
                   <v-btn>Cancel</v-btn>
                 </v-card-actions>
@@ -69,12 +69,12 @@ export default {
     };
   },
   methods: {
-    RegisterBtn() {
+    SignUp() {
       this.errors = [];
       if (this.confirmPassword == this.form.password) {
         this.isSend = true;
         axios
-          .post("/registerstore", this.form)
+          .post("/signup", this.form)
           .then(res => {
             alert("註冊成功");
             this.$router.push("/login");

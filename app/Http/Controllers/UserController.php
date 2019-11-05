@@ -5,21 +5,12 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserStoreRequest;
+use App\Http\Requests\UserLoginRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
-    public function index()
-    {
-        //
-    }
-
-    public function create()
-    {
-        // return view('');
-    }
-
     public function store(UserStoreRequest $request)
     {
         $passwordHashed = Hash::make($request->password, [
@@ -33,10 +24,15 @@ class UserController extends Controller
         return redirect('/');
     }
 
-    public function show(User $user)
+    public function login(UserLoginRequest $request, User $user)
     {
-        //
+        $findUser = $user->where('email', '=', $request->email)->firstOrFail()->get();
+        if (Hash::check($findUser->password, $hashedValue))
+        return $findUser;
     }
+
+    public function show(User $user)
+    { }
 
     public function edit(User $user)
     {
